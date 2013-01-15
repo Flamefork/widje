@@ -10,23 +10,24 @@ Widget is a function that return DOM node. It combines crate template with suppo
 
 ```clojure
 (ns myapp
- (:use-macros [widje.macros :only [defwidget]])
- (:require [widje.core :as widje]))
+  (:use-macros [widje.macros :only [defwidget]])
+  (:require [widje.core :as widje]))
 
-  (defwidget todo [item]      ; widget function name and arguments
-    [:div.todo                ; crate template
-      :p.-text (:name item)]  ;
-    [text]                    ; bind elements to vars by role (see widje.role)
-    (listen text :click       ; handle events
-      (mark-done item))       ;
+(defwidget todo [item]      ; widget function name and arguments
+  [:div.todo                ; crate template
+    :p.-text (:name item)]  ;
+  [text]                    ; bind elements to vars by role (see widje.role)
+  (listen text :click       ; handle events
+    (mark-done item))       ;
   
 (def mytodo {:name "Do stuff"})
 => {:name "Do stuff"}
 
 (todo {:name "Do stuff"})
-=> <div class="todo"><p class="-text">Do stuff</p></div>
+=> HTMLElement <div class="todo"><p class="-text">Do stuff</p></div>
 
 (widje/find-instance mytodo)
+=> HTMLElement <div class="todo"><p class="-text">Do stuff</p></div>
 ```
 
 ## License
