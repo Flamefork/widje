@@ -59,6 +59,5 @@
   [elem evt & body]
   `(jayq.core/bind ~elem ~evt
      (fn [~'event]
-       (jq/prevent ~'event)
        (cljs.core/this-as ~'this
          ~@body))))
