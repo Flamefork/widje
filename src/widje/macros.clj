@@ -56,8 +56,9 @@
 (defmacro listen
   "(listen a :click
      (js/alert \"Hey!\"))"
-  [elem event & body]
-  `(jayq.core/bind ~elem ~event
-     (fn [e#]
-       (jq/prevent e#)
-       (cljs.core/this-as ~'this ~@body))))
+  [elem evt & body]
+  `(jayq.core/bind ~elem ~evt
+     (fn [~'event]
+       (jq/prevent ~'event)
+       (cljs.core/this-as ~'this
+         ~@body))))
