@@ -33,27 +33,26 @@
 (declare atoms-binding)
 
 (def bound
-  ^{:doc "Returns value of func (or just value) bound to atm.
-     func is a function of one argument: current value of atm."
-    :arglists '([atm func?])}
+  "[atm func?]
+  Returns value of func (or just value) bound to atm.
+  func is a function of one argument: current value of atm."
   binding/bound)
 
 (defn bound*
-  ^{:doc "Returns value of func (or just value) bound to all provided atoms.
-     func is a function of (count atm*) arguments: current values of atm(s)."
-    :arglists '([[atm*] func?])}
+  "Returns value of func (or just value) bound to all provided atoms.
+  func is a function of (count atm*) arguments: current values of atm(s)."
   [atoms & [func]]
   (let [func (or func identity)]
     (atoms-binding. atoms func)))
 
 (def bound-coll
-  ^{:doc "Returns value of func (:as opts) bound to each element of collection atom."
-    :arglists '(atm path? opts?)}
+  "[atm path? opts?]
+  Returns value of func (:as opts) bound to each element of collection atom."
   binding/bound-coll)
 
 (def map-bound
-  ^{:doc "Returns value of as func bound to each element of map atom."
-    :arglists '(as atm opts?)}
+  "[as atm opts?]
+  Returns value of as func bound to each element of map atom."
   binding/map-bound)
 
 ;; Internals
