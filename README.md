@@ -6,7 +6,7 @@ Widje is html templating library for ClojureScript based on the awesome [crate](
 
 Widget is a function that return DOM node. It combines crate template with supporting logic (event handling etc) into single logical unit. Also widget keep track of each instance it creates and provide easy way to search them by first argument.
 
-## Usage
+## Widget usage
 
 ```clojure
 (ns myapp
@@ -29,6 +29,37 @@ Widget is a function that return DOM node. It combines crate template with suppo
 (widje/find-instance mytodo)
 => HTMLElement <div class="todo"><p class="-text">Do stuff</p></div>
 ```
+
+There are also `widget` (= `fn`) and `letwidget` (= `letfn`) macros.
+
+## Binding usage
+
+This is actually a documentation for the awesome `crate` binding feature.
+
+```clojure
+(defwidget item [item-atm]
+  [:li
+    (bound item-atm :name)])
+
+(defwidget items [items-coll-atm]
+  [:ul
+    (bound-coll items-coll-atm {:as item})])
+```
+
+Widje adds `(bound* [atoms*] func?)` to crate features for binding to multiple atoms.
+
+## Utils
+
+See `widje.util` for documentation for:
+
+- `evt->key`
+- `bound-checkbox`
+- `checkbox-checked?`
+- `check!`
+
+`macros/listen` macro is an easy way to bind to events (see widget usage example).
+
+`core/render` is an easy way to render widget to some container.
 
 ## License
 

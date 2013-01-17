@@ -44,8 +44,9 @@
   ([name params tags bindings & body]
     `(def ~name (widje.macros/widget ~params ~tags ~bindings ~@body))))
 
-(defmacro letwidget [widgetspecs & body]
+(defmacro letwidget
   "Similar to 'letfn'"
+  [widgetspecs & body]
   `(let ~(vec (interleave
                 (map first widgetspecs)
                 (map #(cons 'widje.macros/widget (rest %)) widgetspecs)))

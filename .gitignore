@@ -6,3 +6,5 @@ pom.xml.asc
 /targets/
 /target/
 .lein-deps-sum
+.idea
+*.iml
