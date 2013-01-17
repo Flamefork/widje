@@ -8,8 +8,8 @@
   "Maps event to readable key names"
   [e]
   (get {
-    08 :backspace
-    09 :tab
+     8 :backspace
+     9 :tab
     13 :enter
     16 :shift
     17 :ctrl
