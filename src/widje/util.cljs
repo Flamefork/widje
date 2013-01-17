@@ -38,13 +38,13 @@
 (defn checkbox-checked?
   "Returns boolean state of checkbox"
   [checkbox]
-  (jq/is ($ checkbox) ":checked"))
+  (jq/is (jq/$ checkbox) ":checked"))
 
 (defn check! [checkbox value]
   "Sets boolean state of checkbox"
   (if value
-    (jq/attr ($ checkbox) "checked" true)
-    (jq/remove-attr ($ checkbox) "checked")))
+    (jq/attr (jq/$ checkbox) "checked" true)
+    (jq/remove-attr (jq/$ checkbox) "checked")))
 
 ; Widget: checkbox bound to atom via val-fn
 (defwidget bound-checkbox [id classes atm val-fn]
