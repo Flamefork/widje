@@ -1,4 +1,4 @@
-(defproject widje "0.1.6"
+(defproject widje "0.1.7-SNAPSHOT"
   :description "Templating System for ClojureScript"
   :url "https://github.com/Flamefork/widje"
   :license {:name "Eclipse Public License - v 1.0"
