@@ -57,9 +57,16 @@
 
 ;; Internals
 
+;; Fix bug for: https://github.com/Flamefork/widje/issues/1
+(defn safely-deref [a]
+  (if (and (instance? crate.binding.SubAtom a)
+           (= (.-atm a) nil))
+    nil
+    (deref a)))
+
 (deftype atoms-binding [atoms value-func]
   crate.binding/bindable
-  (-value [this] (apply value-func (map deref atoms)))
+  (-value [this] (apply value-func (map safely-deref atoms)))
   (-on-change [this func]
     (doseq [atm atoms]
       (add-watch atm (gensym "atom-binding") #(func (crate.binding/-value this))))))
